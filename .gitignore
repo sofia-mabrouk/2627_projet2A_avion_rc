@@ -1,0 +1,49 @@
+# Fichiers système et éditeurs
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.vscode/settings.json
+
+# Fichiers temporaires et journaux
+*.tmp
+*.temp
+*.log
+
+# KiCad : verrous, sauvegardes et fichiers générés localement
+*.kicad_prl
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*.kicad_pro-bak
+*.lck
+*-backups/
+fp-info-cache
+
+# FreeCAD : sauvegardes automatiques
+*.FCStd1
+*.FCStd2
+*.FCStd~
+
+# LaTeX : fichiers auxiliaires et journaux
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+
+# Environnements et sorties de développement éventuelles
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+build/
+dist/
+
+# Fichiers locaux et secrets
+.env
+.env.*
+!.env.example
