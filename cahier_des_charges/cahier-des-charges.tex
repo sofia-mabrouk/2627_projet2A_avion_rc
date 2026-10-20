@@ -1,0 +1,124 @@
+% !TEX program = pdflatex
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{longtable}
+
+\geometry{margin=2.2cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+\title{Cahier des charges\\
+Avion de cartographie aérienne}
+\author{Sofia Mabrouk, Emylie Hiron, Alain Piallat, Melvin Sayavong}
+\date{2e année / 2026-2027}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Déroulé du projet}
+
+\textbf{Système embarqué de cartographie aérienne : avion RC + caméra stabilisée + acquisition et traitement des données}
+
+Ce projet vise à appliquer les notions d'électronique et d'informatique des semestres précédents en développant 
+un système embarqué capable d'acquérir des images du sol depuis un avion radiocommandé, de les associer à des 
+informations de position, puis de produire une représentation cartographique de la zone survolée.
+
+L'avion radiocommandé constitue principalement une plateforme expérimentale. Sa conception mécanique relève de 
+l'aspect hobby du projet et ne constituent pas le coeur de l'ingénierie demandée.
+
+Les deux objectifs principaux sont :
+
+\begin{enumerate}
+    \item \textbf{Commande de vol} : l'avion sera contrôlée par une télécommande.
+    \item \textbf{Intégrer une charge utile électronique embarquée} : une caméra, un système GPS et un système de stockage.
+
+    \item \textbf{Traiter les données de la caméra pour faire une orthomosaïque} à partir d'un logiciel déjà existant permettant de synchroniser les mesures, de reconstruire la trajectoire et d'assembler les photographies.
+\end{enumerate}
+
+Le projet sera développé de manière incrémentale. Une première version sera le test bench de tous les composants de 
+l'avion et la charge utile, sans le corps de vol. L'attention sera concentrée sur le fonctionnement des moteurs, de 
+la caméra et du système d'acquisition/exploitation. 
+Une deuxième version intégrera la stabilisation de la caméra. La version finale devra permettre de produire automatiquement une représentation cartographique à partir des données acquises pendant un vol d'avion.
+
+\section{Cahiers des charges}
+
+\subsection{Cahier des charges du système électronique embarqué}
+
+F: Fonction principale \\
+M: Mécanique \\
+E: Electronique \\
+P: Perspectives, i.e. optionnelles, à faire si temps disponible et les autres charges respectées.
+
+\begin{longtable}{|p{1cm}|p{3cm}|p{\dimexpr\textwidth-1cm-3cm-4\tabcolsep-4\arrayrulewidth\relax}|}
+\hline
+\textbf{ID} & \textbf{Catégorie} & \textbf{Exigence} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{ID} & \textbf{Catégorie} & \textbf{Exigence} \\ \hline
+\endhead
+
+F1 & Fonction principale &
+Le système doit acquérir des images du sol pendant le vol et les enregistrer dans un format exploitable par le logiciel de cartographie. \\ \hline
+
+F2 & Acquisition caméra &
+La caméra doit permettre une cadence d'acquisition adaptée à la vitesse de déplacement de l'avion. \\ \hline
+
+F3 & Stabilité &
+L'acquisition s'arrête quand l'avion pivote. \\ \hline
+
+F4 & Synchronisation &
+Chaque image doit pouvoir être associée à une position (on aurait besoin de la position GPS, la latitude maybe, une vitesse aussi?). \\ \hline
+
+F6 & Télécommande de l'avion &
+L'avion sera radiocommandé par une télécommande préexistante. \\ \hline
+
+F7 & Stockage &
+Le système doit disposer d'une capacité de stockage suffisante pour une mission complète (SD card). \\ \hline
+
+F8 & Exploitation des données &
+Les données de la caméra pourront être traitées à l'aide d'un logiciel déjà existant pour créer une orthomosaïque. \\ \hline
+
+M1 & Conception matérielle &
+L'avion doit pouvoir voler et supporter la charge utile. \\ \hline
+
+M2 & Intégration mécanique &
+La charge utile doit pouvoir être fixée de manière fiable sur l'avion et protéger les composants électroniques contre les vibrations et les mouvements normaux du vol. \\ \hline
+
+E1 & Gestion de l'énergie &
+La consommation de la charge utile doit être mesurée et l'autonomie disponible doit être compatible avec une mission (durée d'un vol?). \\ \hline
+
+E2 & Robustesse électrique &
+Les alimentations doivent être filtrées afin de limiter les perturbations électriques liées au moteur, aux servomoteurs et aux autres équipements embarqués. \\ \hline
+
+E3 & Système de caméra &
+Un système  devra assurer la gestion de la caméra, du stockage, et potentiellement de la stabilisation de la caméra. \\ \hline
+
+E4 & Commandes &
+Un système gèrera la communication de la télécommande et de l'avion (pour les moteurs, ailes, train d'atterrissage). \\ \hline
+
+P1 & Transmission des données &
+Le système pourra transmettre en temps réel un retour caméra à l'utilisateur (faible débit).\\ \hline
+
+P2 & Asservissement de l'avion &
+Fonction 'stabilisation de l'avion' dans le quel il avance en ligne droite pendant x mètres/secondes \\ \hline
+
+\end{longtable}
+
+\begin{center}
+Table 1 - Cahier des charges fonctionnel du système électronique embarqué
+\end{center}
+
+\end{document}
